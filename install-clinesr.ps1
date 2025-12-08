@@ -1,7 +1,10 @@
 param(
-    [string]$DownloadPath = "$env:TEMP\cline-sr.cline-sr-1.8.0.vsix",
+    [string]$DownloadPath = "$PSScriptRoot/assets/cline-sr.cline-sr-1.8.0.vsix",
     [string]$DownloadUrl = "https://ocean.sec.samsung.net/marketplace/api/cline-sr/cline-sr/1.8.0/file/cline-sr.cline-sr-1.8.0.vsix"
 )
+
+Write-Debug $DownloadPath
+Write-Debug $DownloadUrl
 
 # Function to download file if it doesn't exist
 function Get-FileIfNotExists {
