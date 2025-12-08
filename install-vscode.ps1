@@ -1,27 +1,24 @@
 function Test-VSCodeInstalled {
-    Write-Debug "Checking VSCodeInstalled"
+    # Looks for user installed or system installed vscode
+    $vscodePaths = @(
+        "${env:LOCALAPPDATA}\Programs\Microsoft VS Code\Code.exe",
+        "${env:ProgramFiles}\Microsoft VS Code\Code.exe",
+        "${env:ProgramFiles(x86)}\Microsoft VS Code\Code.exe"
+    )
 
-    $vscodePath     = "${env:ProgramFiles}\Microsoft VS Code\Code.exe"
-    $vscodePathX86  = "${env:ProgramFiles(x86)}\Microsoft VS Code\Code.exe"
-    $vscodePathUser = "${env:LOCALAPPDATA}\Programs\Microsoft VS Code\Code.exe"
-
-    if (Test-Path $vscodePath -PathType Leaf) {
-        Write-Debug "VSCode is already installed at: $vscodePath"
-        return $true
+    foreach ($path in $vscodePaths) {
+        if (Test-Path $path) {
+            $parent = Split-Path -Path $path -Parent
+            Write-Debug "VSCode is already installed at: '$parent'"
+            return $true
+        }
     }
 
-    if (Test-Path $vscodePathX86 -PathType Leaf) {
-        Write-Debug "VSCode is already installed at: $vscodePathX86"
-        return $true
-    }
-
-    if (Test-Path $vscodePathUser -PathType Leaf) {
-        Write-Debug "VSCode is already installed at: $vscodePathUser"
-        return $true
-    }
-
-    if (Get-Command code -ErrorAction SilentlyContinue) {
-        Write-Debug "VSCode is already installed and available in PATH"
+    $codePath = (Get-Command code.cmd).Source
+    if ($codePath) {
+        $parent = Split-Path -Path $codePath -Parent
+        $parent = Split-Path -Path $parent -Parent
+        Write-Debug "VSCode is already installed at: '$parent' (found in PATH variable)"
         return $true
     }
 
