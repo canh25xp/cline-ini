@@ -59,7 +59,7 @@ function Get-VSCodeInstaller {
 function Install-VSCode {
     param([string]$InstallerPath)
 
-    Write-Host "Installing VSCode silently..."
+    Write-Host "Installing VSCode ..."
     try {
         Start-Process -FilePath $InstallerPath -ArgumentList "/SILENT", "/MERGETASKS=!runcode,!desktopicon,!quicklaunchicon,!associatewithfiles,!addcontextmenufiles,!addcontextmenufolders,!addtopath" -Wait
         Write-Host "VSCode installation completed successfully"
@@ -77,7 +77,7 @@ if (Test-VSCodeInstalled) {
 }
 
 # Latest vscode user setup for windows
-$installerName = "VSCodeSetup.exe"
+$installerName = "VSCodeUserSetup.exe"
 $downloadUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
 # $downloadUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64"
 
