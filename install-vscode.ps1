@@ -69,7 +69,7 @@ function Install-VSCode {
     }
 }
 
-Write-Host "=== VSCode Installation Start ==="
+Write-Host "=== Installing VSCode ==="
 
 if (Test-VSCodeInstalled) {
     Write-Host "VSCode is already installed."
@@ -87,4 +87,4 @@ if (-not (Test-VSCodeInstaller -InstallerName $installerName)) {
 
 Install-VSCode -InstallerPath $installerName
 
-Write-Host "=== Installation Process Completed ==="
+Write-Host "=== Installation Completed ==="
