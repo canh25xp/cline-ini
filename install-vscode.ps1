@@ -74,7 +74,7 @@ if (Test-VSCodeInstalled) {
 }
 
 # Latest vscode user setup for windows
-$installerName = "VSCodeUserSetup.exe"
+$installerName = "$PSScriptRoot/assets/VSCodeUserSetup.exe"
 $downloadUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
 # $downloadUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64"
 
