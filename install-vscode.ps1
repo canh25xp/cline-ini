@@ -58,7 +58,16 @@ function Install-VSCode {
 
     Write-Host "Installing VSCode ..."
     try {
-        Start-Process -FilePath $InstallerPath -ArgumentList "/SILENT", "/MERGETASKS=!runcode,!desktopicon,!quicklaunchicon,!associatewithfiles,!addcontextmenufiles,!addcontextmenufolders,!addtopath" -Wait
+        Start-Process -FilePath $InstallerPath -ArgumentList "/SILENT", "/MERGETASKS=!runcode,!desktopicon,!quicklaunchicon,!associatewithfiles,!addcontextmenufiles,!addcontextmenufolders,addtopath" -Wait
+        # Merge tasks options
+        # runcode                 Run VS Code after install
+        # addtopath               Add `code` to PATH
+        # desktopicon             Desktop shortcut
+        # quicklaunchicon         Quick Launch / Taskbar shortcut
+        # associatewithfiles      File associations
+        # addcontextmenufiles     Open with Code on files
+        # addcontextmenufolders   Open with Code on folders
+
         Write-Host "VSCode installation completed successfully"
     } catch {
         Write-Error "Failed to install VSCode: $_"
@@ -75,8 +84,8 @@ if (Test-VSCodeInstalled) {
 
 # Latest vscode user setup for windows
 $installerName = "$PSScriptRoot/assets/VSCodeUserSetup.exe"
-$downloadUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
-# $downloadUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64"
+$downloadUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" # user installation
+# $downloadUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64" # system installation
 
 if (-not (Test-VSCodeInstaller -InstallerName $installerName)) {
     Get-VSCodeInstaller -Url $downloadUrl -OutputFile $installerName
