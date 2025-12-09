@@ -3,12 +3,12 @@
   <MappedFolders>
     <MappedFolder>
       <HostFolder>C:\Users\vancanh.ng\projects\cline-ini</HostFolder>
-      <SandboxFolder>C:\temp</SandboxFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Downloads\cline-ini</SandboxFolder>
       <ReadOnly>false</ReadOnly>
     </MappedFolder>
   </MappedFolders>
   <Networking>Disable</Networking>
   <LogonCommand>
-    <Command>powershell.exe -ExecutionPolicy Bypass -File "C:\temp\install-vscode.ps1"</Command>
+    <Command>powershell.exe -ExecutionPolicy Bypass -File "C:\Users\WDAGUtilityAccount\Downloads\cline-ini\install-vscode.ps1"</Command>
   </LogonCommand>
 </Configuration>
