@@ -9,6 +9,6 @@
   </MappedFolders>
   <Networking>Disable</Networking>
   <LogonCommand>
-    <Command>cmd.exe /k "C:\Users\WDAGUtilityAccount\Downloads\cline-ini\clickme.bat"</Command>
+    <Command>conhost.exe cmd.exe /k "C:\Users\WDAGUtilityAccount\Downloads\cline-ini\clickme.bat"</Command>
   </LogonCommand>
 </Configuration>
