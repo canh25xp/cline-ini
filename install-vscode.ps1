@@ -14,7 +14,7 @@ function Test-VSCodeInstalled {
         }
     }
 
-    $codePath = (Get-Command code.cmd).Source
+    $codePath = (Get-Command code.cmd -ErrorAction SilentlyContinue).Source
     if ($codePath) {
         $parent = Split-Path -Path $codePath -Parent
         $parent = Split-Path -Path $parent -Parent
