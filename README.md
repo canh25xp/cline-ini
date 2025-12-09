@@ -17,3 +17,5 @@
 - [ ] Merge `./install-clinesr.ps1` and `./install-vscode.ps1` into a single script.
 - [ ] Script that generate archive including the final script and all the require installers.
 - [ ] Download latest version of ClineSR instead of hard-coding.
+- [ ] Reload PATH environment variable after installation.
+- [ ] Setup Cline API keys programmatically.
