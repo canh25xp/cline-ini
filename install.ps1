@@ -126,6 +126,7 @@ function Install-VSCodeExtension {
 
     Write-Host "Installing VSCode extension from $ExtensionPath"
     try {
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
         & code --install-extension $ExtensionPath
         if ($LASTEXITCODE -eq 0) {
             Write-Host "Extension installed successfully"
