@@ -113,6 +113,36 @@ function Get-FileIfNotExists {
     }
 }
 
+# Function to check if VSCode extension is already installed
+function Test-VSCodeExtensionInstalled {
+    param(
+        [string]$ExtensionPath
+    )
+
+    # Extract extension ID from VSIX filename (e.g., cline-sr.cline-sr-1.8.0.vsix -> cline-sr.cline-sr)
+    $fileName = [System.IO.Path]::GetFileNameWithoutExtension($ExtensionPath)
+    if ($fileName -match '^(.*)-\d+\.\d+\.\d+$') {
+        $extensionId = $matches[1]
+    } else {
+        $extensionId = $fileName
+    }
+
+    Write-Debug "Checking if extension '$extensionId' is already installed..."
+    try {
+        $installedExtensions = & code --list-extensions 2>$null
+        if ($installedExtensions -contains $extensionId) {
+            Write-Host "Extension '$extensionId' is already installed"
+            return $true
+        } else {
+            Write-Debug "Extension '$extensionId' is not installed"
+            return $false
+        }
+    } catch {
+        Write-Debug "Could not check installed extensions: $($_.Exception.Message)"
+        return $false
+    }
+}
+
 # Function to install VSCode extension
 function Install-VSCodeExtension {
     param(
@@ -122,6 +152,12 @@ function Install-VSCodeExtension {
     if (-not (Test-Path $ExtensionPath)) {
         Write-Error "Extension file not found: $ExtensionPath"
         exit 1
+    }
+
+    # Check if extension is already installed
+    if (Test-VSCodeExtensionInstalled -ExtensionPath $ExtensionPath) {
+        Write-Host "Skipping extension installation (already installed)"
+        return
     }
 
     Write-Host "Installing VSCode extension from $ExtensionPath"
