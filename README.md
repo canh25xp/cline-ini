@@ -19,3 +19,4 @@
 - [ ] Download latest version of ClineSR instead of hard-coding.
 - [x] Reload PATH environment variable after installation.
 - [ ] Setup Cline API keys programmatically.
+- [ ] Setup environment for `p4` command

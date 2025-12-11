@@ -1,7 +1,7 @@
 param(
-    [string]$VSCodeInstallerPath = "$PSScriptRoot/assets/VSCodeUserSetup.exe",
+    [string]$VSCodeInstallerPath = "$PSScriptRoot\assets\VSCodeUserSetup.exe",
     [string]$VSCodeDownloadUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user",
-    [string]$ClineSRDownloadPath = "$PSScriptRoot/assets/cline-sr.cline-sr-1.8.0.vsix",
+    [string]$ClineSRDownloadPath = "$PSScriptRoot\assets\cline-sr.cline-sr-1.8.0.vsix",
     [string]$ClineSRDownloadUrl = "https://ocean.sec.samsung.net/marketplace/api/cline-sr/cline-sr/1.8.0/file/cline-sr.cline-sr-1.8.0.vsix"
 )
 
